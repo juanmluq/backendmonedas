@@ -179,10 +179,10 @@ router.post("/create_preference/:user/:id/:saldo/:usercomp", async (req, res) =>
     const user = req.params.user; 
     const saldo = req.params.saldo;
     const usercomp = req.params.usercomp;
-    var succ = `http://localhost:3000/vender/${user}/${id}/${saldo / 10000}/${usercomp}`;
+    var succ = `https://potenciarcash.vercel.app/vender/${user}/${id}/${saldo / 10000}/${usercomp}`;
     
         if(id === usercomp){
-             succ = `http://localhost:3000/comprar/${user}/${id}/${saldo / 10000}/${usercomp}`
+             succ = `https://potenciarcash.vercel.app/comprar/${user}/${id}/${saldo / 10000}/${usercomp}`
             }
                let preference = {
            items: [
@@ -194,8 +194,8 @@ router.post("/create_preference/:user/:id/:saldo/:usercomp", async (req, res) =>
            ],
            back_urls: {
                "success": succ,
-               "failure": "http://localhost:3000/",
-               "pending": "http://localhost:3001/feedback"
+               "failure": "https://potenciarcash.vercel.app/",
+               "pending": "https://potenciarcash.vercel.app/"
            },
            auto_return: "approved",
        };
