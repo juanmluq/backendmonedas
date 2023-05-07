@@ -2,6 +2,7 @@ const { Router } = require('express');
 const axios = require('axios');
 const { Usermoneda } = require ("../db");
 const mercadopago = require("mercadopago");
+require('dotenv').config();
 
 // REPLACE WITH YOUR ACCESS TOKEN AVAILABLE IN: https://developers.mercadopago.com/panel
 mercadopago.configure({
