@@ -3,10 +3,13 @@ const axios = require('axios');
 const { Usermoneda } = require ("../db");
 const mercadopago = require("mercadopago");
 require('dotenv').config();
+const {
+  MP_KEY
+} = require("../config.js");
 
 // REPLACE WITH YOUR ACCESS TOKEN AVAILABLE IN: https://developers.mercadopago.com/panel
 mercadopago.configure({
-	access_token: "APP_USR-8214833007776308-041716-d6a52e949590a6ab9beb8587e25f9c8b-130971066",
+	access_token: `${MP_KEY}`,
 });
 
 const router = Router();
