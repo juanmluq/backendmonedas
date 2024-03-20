@@ -24,6 +24,7 @@
     "jsonwebtoken": "^8.5.1",
     "mercadopago": "^1.5.15",
     "morgan": "^1.10.0",
+    "patch-package": "^8.0.0",
     "pg": "^8.5.1",
     "punycode": "^2.3.1",
     "railway": "^2.0.17",
