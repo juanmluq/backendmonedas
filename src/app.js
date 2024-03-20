@@ -8,7 +8,6 @@ const punycode = require('punycode/')
 require('./db.js');
 
 const server = express();
-
 server.use(cors())
 
 server.name = 'API';
