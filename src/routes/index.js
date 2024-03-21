@@ -9,9 +9,9 @@ const {
 
 // REPLACE WITH YOUR ACCESS TOKEN AVAILABLE IN: https://developers.mercadopago.com/panel
 
-mercadopago.configure({
-	access_token: `${MP_KEY}`,
-});
+//mercadopago.configure({
+//	access_token: `${MP_KEY}`,
+//});
 
 const router = Router();
 
