@@ -174,41 +174,7 @@ try{
 
 
 
-router.post("/create_preference/:user/:id/:saldo/:usercomp", async (req, res) => {
-    const id = req.params.id; 
-    const user = req.params.user; 
-    const saldo = req.params.saldo;
-    const usercomp = req.params.usercomp;
-    var succ = `https://potenciarcash.vercel.app/vender/${user}/${id}/${saldo / 10000}/${usercomp}`;
-    
-        if(id === usercomp){
-             succ = `https://potenciarcash.vercel.app/comprar/${user}/${id}/${saldo / 10000}/${usercomp}`
-            }
-               let preference = {
-           items: [
-               {
-                   title: req.body.description,
-                   unit_price: Number(req.body.price),
-                   quantity: Number(req.body.quantity),
-               }
-           ],
-           back_urls: {
-               "success": succ,
-               "failure": "https://potenciarcash.vercel.app/",
-               "pending": "https://potenciarcash.vercel.app/"
-           },
-           auto_return: "approved",
-       };
-   
-       mercadopago.preferences.create(preference)
-           .then(function (response) {
-               res.json({
-                   id: response.body.id
-               });
-           }).catch(function (error) {
-               console.log(error);
-           });
-   });
+
    
    router.get('/feedback', function (req, res) {
        res.json({
