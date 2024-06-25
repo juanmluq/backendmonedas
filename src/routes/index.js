@@ -1,17 +1,19 @@
 const { Router } = require('express');
 const axios = require('axios');
 const { Usermoneda } = require ("../db");
-const mercadopago = require("mercadopago");
+const { MercadoPagoConfig, Preference } = require("mercadopago");
 require('dotenv').config();
 const {
   MP_KEY
 } = require("../config.js");
 
-// REPLACE WITH YOUR ACCESS TOKEN AVAILABLE IN: https://developers.mercadopago.com/panel
+//  REPLACE WITH YOUR ACCESS TOKEN AVAILABLE IN: https://developers.mercadopago.com/panel
 
-//mercadopago.configure({
-//	access_token: `${MP_KEY}`,
-//});
+const client = new MercadoPagoConfig({ accessToken: `${MP_KEY}` });
+
+// MercadoPagoConfig.config({
+// 	access_token: `${MP_KEY}`,
+// });
 
 const router = Router();
 
@@ -179,6 +181,7 @@ router.post("/create_preference/:user/:id/:saldo/:usercomp", async (req, res) =>
     const user = req.params.user; 
     const saldo = req.params.saldo;
     const usercomp = req.params.usercomp;
+    const preferenc = new Preference(client);
     var succ = `https://potenciarcash.vercel.app/vender/${user}/${id}/${saldo / 10000}/${usercomp}`;
     
         if(id === usercomp){
@@ -199,15 +202,33 @@ router.post("/create_preference/:user/:id/:saldo/:usercomp", async (req, res) =>
            },
            auto_return: "approved",
        };
-   
-       mercadopago.preferences.create(preference)
-           .then(function (response) {
-               res.json({
-                   id: response.body.id
+       preferenc.create({
+        body: {
+            // false,
+          items: [
+            {
+              title: 'Mi producto',
+              quantity: 1,
+              unit_price: 2000
+            }
+          ],
+        }
+      })
+      .then(function (response) {
+                   res.json({
+                       id: response.body.id
+                   });
+               }).catch(function (error) {
+                   console.log(error);
                });
-           }).catch(function (error) {
-               console.log(error);
-           });
+    //    MercadoPagoConfig.preferences.create(preference)
+    //        .then(function (response) {
+    //            res.json({
+    //                id: response.body.id
+    //            });
+    //        }).catch(function (error) {
+    //            console.log(error);
+    //        });
    });
    
    router.get('/feedback', function (req, res) {
