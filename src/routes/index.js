@@ -1,7 +1,6 @@
 const { Router } = require('express');
 const axios = require('axios');
 const { Usermoneda } = require ("../db");
-// const mercadopago = require("mercadopago");
 require('dotenv').config();
 const {
   MP_KEY
