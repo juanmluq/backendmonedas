@@ -7,16 +7,9 @@ const {
   MP_KEY
 } = require("../config.js");
 
-// REPLACE WITH YOUR ACCESS TOKEN AVAILABLE IN: https://developers.mercadopago.com/panel
-
-//mercadopago.configure({
-//	access_token: `${MP_KEY}`,
-//});
-
 const router = Router();
 
-
-const getDbInfo = async () => {// esta funcion me trae la info de la base de datos
+const getDbInfo = async () => {
   return await Usermoneda.findAll({
   })
 }
@@ -24,16 +17,15 @@ const getDbInfo = async () => {// esta funcion me trae la info de la base de dat
 router.get("/usermonedas", async (req, res) => {
     const name = req.query.name
     let usuariosTotal = await getDbInfo();
-    if(name) {//si hay un name que me pasen por query
-        let usuarioName = await usuariosTotal.filter(el => el.name.toLowerCase().includes(name.toLowerCase()))//agarra el name y fijate si incluye lo que le pase por query en este caso name. tambien convierte a minuscula para comparar que sea igual indistinto si hay mayusculas. El include es para hacer una busqueda mas global (si pongo === deberia ser exactamente lo mismo).
+    if(name) {
+        let usuarioName = await usuariosTotal.filter(el => el.name.toLowerCase().includes(name.toLowerCase()))
         usuarioName.length ? 
-        res.status(200).send(usuarioName) : //sino hacer:
+        res.status(200).send(usuarioName) :
         res.status(404).send("No esta el user");
     } else { //si no me pasan name por query hacer:
         res.status(200).send(usuariosTotal)
     }
-    })
-
+  })
 
 
  router.post("/usermoneda", async (req, res) => {
@@ -48,10 +40,10 @@ router.get("/usermonedas", async (req, res) => {
         fecdata,
         access,
         pagopending,
-        createdindb, //esto es para ver si esta creado en db
+        createdindb,
     } = req.body
 
-    let usuarioCreated = await Usermoneda.create ({ //creo el videogame
+    let usuarioCreated = await Usermoneda.create ({
         name,
         user,
         password,
@@ -94,9 +86,7 @@ router.put("/usermoneda/:id", async (req, res) => {
         res.status(200).send("saldo actualizado")
     } catch (error) {
          res.status(404).send("No se encontro ese usuario");
-
     }
-   
 })
 
 router.put("/access/:id", async (req, res) => {
@@ -114,10 +104,9 @@ router.put("/access/:id", async (req, res) => {
         res.status(200).send("access actualizado")
     } catch (error) {
          res.status(404).send("No se encontro ese usuario");
-
-    }
-   
+    } 
 })
+
 router.put("/pagopending/:id", async (req, res) => {
     try {
         let id = req.params.id;
@@ -133,10 +122,9 @@ router.put("/pagopending/:id", async (req, res) => {
         res.status(200).send("pago pending actualizado")
     } catch (error) {
          res.status(404).send("No se encontro ese usuario");
-
     }
-   
 })
+
 router.put("/password/:id", async (req, res) => {
     try {
         let id = req.params.id;
@@ -152,9 +140,7 @@ router.put("/password/:id", async (req, res) => {
         res.status(200).send("Password actualizado")
     } catch (error) {
          res.status(404).send("No se encontro ese usuario");
-
-    }
-   
+    } 
 })
 
 router.delete("/usermoneda/:id", async (req,res) => {
@@ -167,16 +153,12 @@ try{
         },
     });
     res.status(200).send("Usuario eliminado correctamente!")
-} catch(error){
+  } catch(error){
     res.status(400).send("No se pudo eliminar el usuario")
-}
+  }
 })
-
-
-
-
    
-   router.get('/feedback', function (req, res) {
+router.get('/feedback', function (req, res) {
        res.json({
            Payment: req.query.payment_id,
            Status: req.query.status,
