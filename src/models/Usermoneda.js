@@ -11,16 +11,16 @@ module.exports = (sequelize) => {
       primaryKey: true //es la clave primaria osea el id.
     },
     name: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(50),
       allowNull: false,
       //unique: esto me sirve para un mail por ejemplo. suponiendo que registro mi mail luque11@gmail.com si viene otro a querer regristrarse con el mismo mail no lo deja
     },
     user: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(25),
       allowNull: false
     },
     password: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(20),
       allowNull: false
     },
     saldo: {
@@ -28,11 +28,11 @@ module.exports = (sequelize) => {
       allowNull: false
     },
     correo: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(50),
       allowNull: false
     },
     pais: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(50),
       allowNull: false
     },
     phone: {
@@ -40,11 +40,11 @@ module.exports = (sequelize) => {
       allowNull: false
     },
     fecdata: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(10),
       allowNull: false
     },
     pagopending: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(20),
       allowNull: false,
     },
     access: {
