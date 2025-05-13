@@ -8,8 +8,8 @@ const {
 // `postgresql://postgres:pbd1jHFIBof7LqPaQBcN@containers-us-west-209.railway.app:7122/railway`
 // `postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`
 // `postgres://postgres:11QAZWSX@localhost/usersmoneda`
-// const sequelize = new Sequelize(`postgresql://postgres:ADdDZBnrtFcVvVINthmtSLbFmTcAsHdS@roundhouse.proxy.rlwy.net:18001/railway`
-const sequelize = new Sequelize(`postgres://postgres:11QAZWSX@localhost:5432/railway`
+ const sequelize = new Sequelize(`postgresql://postgres:ADdDZBnrtFcVvVINthmtSLbFmTcAsHdS@roundhouse.proxy.rlwy.net:18001/railway`
+//const sequelize = new Sequelize(`postgres://postgres:11QAZWSX@localhost:5432/railway`
 , {
   logging: false, // set to console.log to see the raw SQL queries
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
