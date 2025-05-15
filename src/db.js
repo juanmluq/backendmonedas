@@ -9,13 +9,12 @@ const {
 // `postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`
 // `postgres://postgres:11QAZWSX@localhost/usersmoneda`
 //const sequelize = new Sequelize(`postgresql://postgres:ADdDZBnrtFcVvVINthmtSLbFmTcAsHdS@roundhouse.proxy.rlwy.net:18001/railway`
-const sequelize = new Sequelize(`postgresql://postgres:11QAZWSX@192.168.43.154:5432/postgres`
+const sequelize = new Sequelize(`postgresql://postgres:11QAZWSX@192.168.43.154:5433/postgres`
 , {
   logging: false, // set to console.log to see the raw SQL queries
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
 });
 const basename = path.basename(__filename);
-
 
 const modelDefiners = [];
 
