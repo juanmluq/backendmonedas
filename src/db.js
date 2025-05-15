@@ -16,6 +16,7 @@ const sequelize = new Sequelize(`postgresql://postgres:11QAZWSX@localhost/postgr
 });
 const basename = path.basename(__filename);
 
+
 const modelDefiners = [];
 
 // Leemos todos los archivos de la carpeta Models, los requerimos y agregamos al arreglo modelDefiners
